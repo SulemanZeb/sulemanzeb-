@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suleman Zeb - Physicist & Data Scientist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* General body and scrollbar styles for light theme */
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #f8fafc; /* light gray/off-white */
+            color: #1f2937; /* dark gray text */
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e2e8f0; /* light gray for track */
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e0; /* slightly darker light gray */
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a0aec0; /* even darker on hover */
+        }
+
+        /* Hero section canvas and content styling */
+        #hero-canvas {
+            z-index: 0;
+        }
+
+        .hero-content-box {
+            background-color: rgba(255, 255, 255, 0.95); /* More solid white */
+            backdrop-filter: blur(10px); /* Blurred glass effect */
+            -webkit-backdrop-filter: blur(10px); /* For Safari */
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); /* Much stronger shadow */
+        }
+
+        /* Section headers with underline */
+        .section-header {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: #3b82f6; /* blue-500 for headers */
+        }
+        .section-header::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 70%;
+            height: 3px;
+            background-color: #3b82f6; /* blue-500 */
+            border-radius: 2px;
+        }
+
+        /* Card styling (all sections and project cards) */
+        .card {
+            background-color: rgba(255, 255, 255, 0.95); /* More solid white for cards */
+            border-radius: 1.5rem; /* More rounded */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Softer shadow */
+            border: 1px solid rgba(226, 232, 240, 0.7); /* light gray border */
+            backdrop-filter: blur(8px); /* Blur effect for cards */
+            -webkit-backdrop-filter: blur(8px); /* For Safari */
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            height: 100%; /* Ensure cards in a grid row have the same height */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); /* Much stronger shadow on hover */
+        }
+        
+        /* Keyframe animations for fade-in effects */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+        }
+
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-20 bg-white bg-opacity-80 backdrop-filter backdrop-blur-sm p-4 shadow-md">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+             <div class="text-2xl font-bold text-gray-800">
+                Suleman Zeb
+            </div>
+            <div class="hidden md:flex flex-wrap items-center justify-center space-x-3 text-sm">
+                <a href="#about" class="hover:text-blue-600 transition duration-300">About</a>
+                <a href="#research-interests" class="hover:text-blue-600 transition duration-300">Interests</a>
+                <a href="#education" class="hover:text-blue-600 transition duration-300">Education</a>
+                <a href="#research-projects" class="hover:text-blue-600 transition duration-300">Research</a>
+                <a href="#work-experience" class="hover:text-blue-600 transition duration-300">Experience</a>
+                <a href="#projects" class="hover:text-blue-600 transition duration-300">Projects</a>
+                <a href="#skills" class="hover:text-blue-600 transition duration-300">Skills</a>
+                <a href="#online-courses" class="hover:text-blue-600 transition duration-300">Courses</a>
+                <a href="#books" class="hover:text-blue-600 transition duration-300">Books</a>
+                <a href="#learning-resources" class="hover:text-blue-600 transition duration-300">Resources</a>
+                <a href="#recommendations" class="hover:text-blue-600 transition duration-300">Recommendations</a>
+                <a href="#contact" class="hover:text-blue-600 transition duration-300">Contact</a>
+            </div>
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-gray-800 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu md:hidden mt-3">
+            <a href="#about" class="block py-2 px-4 text-sm hover:bg-gray-200 rounded">About</a>
+            <a href="#research-interests" class="block py-2 px-4 text-sm hover:bg-gray-200 rounded">Interests</a>
+            <a href="#education" class="block py-2 px-4 text-sm hover:bg-gray-200 rounded">Education</a>
+            <a href="#research-projects" class="block py-2 px-4 text-sm hover:bg-gray-200 rounded">Research</a>
+            <a href="#work-experience" class="block py-2 px-4 text-sm hover:bg-gray-200 rounded">Experience</a>
+            <a href="#projects" class="block py-2 px-4 text-sm hover:bg-gray-200 rounded">Projects</a>
+            <a href="#skills" class="block py-2 px-4 text-sm hover:bg-gray-200 rounded">Skills</a>
+            <a href="#online-courses" class="block py-2 px-4 text-sm hover:bg-gray-200 rounded">Courses</a>
+            <a href="#books" class="block py-2 px-4 text-sm hover:bg-gray-200 rounded">Books</a>
+            <a href="#learning-resources" class="block py-2 px-4 text-sm hover:bg-gray-200 rounded">Resources</a>
+            <a href="#recommendations" class="block py-2 px-4 text-sm hover:bg-gray-200 rounded">Recommendations</a>
+            <a href="#contact" class="block py-2 px-4 text-sm hover:bg-gray-200 rounded">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section with 3D Background -->
+    <section id="hero" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <canvas id="hero-canvas" class="absolute inset-0 w-full h-full"></canvas>
+        <div class="relative z-10 text-center p-8 hero-content-box rounded-2xl shadow-2xl">
+            <h1 class="text-5xl md:text-7xl font-extrabold text-gray-900 leading-tight mb-4">
+                <span>Suleman Zeb</span>
+            </h1>
+            <p class="text-2xl md:text-3xl text-gray-700 font-light tracking-wide mt-4">Physicist & Data Scientist</p>
+            <div class="mt-8 flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
+                <a href="#projects" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105">View Projects</a>
+                <a href="#contact" class="bg-transparent border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <main class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <!-- About Me Section -->
+        <section id="about" class="mb-24 card p-8 reveal">
+            <h2 class="text-4xl font-bold section-header">About Me</h2>
+            <p class="mt-6 text-lg leading-relaxed">
+                Hi, I'm Suleman Zeb — a physicist with an M.Phil. in Physics and a strong interest in data science and machine learning. During my research, I used machine learning and deep learning to study and predict the properties of materials, which gave me hands-on experience in working with data and building smart models.
+            </p>
+            <p class="mt-4 text-lg leading-relaxed">
+                Because of my background in physics, I have a deep understanding of mathematics and statistics, which helps me solve complex problems, analyze data, and build accurate models. I enjoy working with data to find patterns, make predictions, and support smart decisions.
+            </p>
+        </section>
+
+        <!-- Research Interests Section -->
+        <section id="research-interests" class="mb-24 card p-8 reveal">
+            <h2 class="text-4xl font-bold section-header">Research Interests</h2>
+            <div class="mt-6 grid grid-cols-2 md:grid-cols-3 gap-4 text-center">
+                <div class="bg-blue-100 text-blue-800 p-3 rounded-lg font-semibold">Machine Learning</div>
+                <div class="bg-blue-100 text-blue-800 p-3 rounded-lg font-semibold">Deep Learning</div>
+                <div class="bg-blue-100 text-blue-800 p-3 rounded-lg font-semibold">Material Science</div>
+                <div class="bg-gray-100 text-gray-800 p-3 rounded-lg font-semibold">DFT Simulations</div>
+                <div class="bg-gray-100 text-gray-800 p-3 rounded-lg font-semibold">Quantum Computing</div>
+                <div class="bg-gray-100 text-gray-800 p-3 rounded-lg font-semibold">Condensed Matter Physics</div>
+                <div class="bg-indigo-100 text-indigo-800 p-3 rounded-lg font-semibold col-span-2 md:col-span-1">High Energy Physics</div>
+                <div class="bg-indigo-100 text-indigo-800 p-3 rounded-lg font-semibold col-span-2 md:col-span-2">Cosmology</div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="mb-24 card p-8 reveal">
+            <h2 class="text-4xl font-bold section-header">Education</h2>
+            <div class="mt-6 space-y-8">
+                <!-- M.Phil -->
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-800">Master of Philosophy in Physics <span class="text-lg font-normal text-gray-500">[2022 – 2025]</span></h3>
+                    <p class="text-lg text-gray-600">University of Peshawar, Pakistan</p>
+                    <p class="text-md text-blue-500 font-semibold">CGPA: 3.5 / 4.0</p>
+                    <div class="mt-4 border-l-4 border-blue-200 pl-4">
+                        <p><strong class="font-semibold text-gray-700">Thesis Title:</strong> Study of different properties of BaTiO3 using ALIGNN and M3GNet Models</p>
+                        <p><strong class="font-semibold text-gray-700">Advisors:</strong> Dr. Shabeer Ahmad Mian & Dr. Ibrar Ahmad</p>
+                        <p class="mt-2 text-sm text-gray-500"><strong class="font-semibold">Courses:</strong> Computational Physics, Advanced Quantum Material, Mathematical Methods, Material Processing, Environmental Aerosol Physics, Dielectric & Optical Properties, Physics of Thin Film, Organic Electronic Devices.</p>
+                    </div>
+                </div>
+                 <!-- BS -->
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-800">Bachelor of Science in Physics <span class="text-lg font-normal text-gray-500">[2017 – 2021]</span></h3>
+                    <p class="text-lg text-gray-600">Islamia College University Peshawar, Pakistan</p>
+                    <p class="text-md text-blue-500 font-semibold">CGPA: 2.86 / 4.0</p>
+                    <div class="mt-4 border-l-4 border-blue-200 pl-4">
+                        <p><strong class="font-semibold text-gray-700">Thesis Title:</strong> Structural, Electronic & Optical Properties of Halide Perovskites using Density Functional Theory</p>
+                        <p><strong class="font-semibold text-gray-700">Advisor:</strong> Dr. Ghulam Mortaza</p>
+                    </div>
+                </div>
+                <!-- College & School -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t">
+                     <div>
+                        <h3 class="text-xl font-bold text-gray-800">F.Sc in Pre-Medical & Additional Math’s <span class="text-md font-normal text-gray-500">[2014 – 2016]</span></h3>
+                        <p class="text-md text-gray-600">Government College Peshawar</p>
+                        <p class="text-sm text-blue-500 font-semibold">Grades: 74%</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800">SSC <span class="text-md font-normal text-gray-500">[2014]</span></h3>
+                        <p class="text-md text-gray-600">Islamia Collegiate School Peshawar</p>
+                        <p class="text-sm text-blue-500 font-semibold">Grades: 84%</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Research Projects Section -->
+        <section id="research-projects" class="mb-24 card p-8 reveal">
+            <h2 class="text-4xl font-bold section-header">Research Projects</h2>
+            <div class="mt-6 space-y-6">
+                <div>
+                    <h3 class="text-xl font-semibold">Study of Barium Titanate using Atomistic Line Graph Neural Network</h3>
+                    <p class="mt-2 text-gray-700">Investigated electronic, elastic, and thermoelectric properties of Barium Titanate using ALIGNN and M3GNet modeling techniques.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold">Structural, Electronic & Optical Properties of Halide Perovskites using DFT</h3>
+                    <p class="mt-2 text-gray-700">Analyzed structural, electronic, and optical characteristics of halide perovskites through first-principles calculations using Wien2k simulation software.</p>
+                </div>
+                 <div>
+                    <h3 class="text-xl font-semibold">Completed Six Different Research Projects in Material Science</h3>
+                    <p class="mt-2 text-gray-700">Delivered six diverse research projects and theses as a freelancer, providing expert guidance and analytical support to students.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Work Experience Section -->
+        <section id="work-experience" class="mb-24 card p-8 reveal">
+            <h2 class="text-4xl font-bold section-header">Work Experience</h2>
+            <div class="mt-6 space-y-6">
+                <div>
+                    <h3 class="text-xl font-semibold">Government Primary School Teacher <span class="text-md font-normal text-gray-500">[2025 – Present]</span></h3>
+                    <p class="mt-1 text-gray-700">Passionate & dedicated educator committed to nurturing, inspiring & educating young minds.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold">Researcher in ML & DL in Materials Science <span class="text-md font-normal text-gray-500">[2023 – 2025]</span></h3>
+                    <p class="mt-1 text-gray-700">Conducted research on applying ML/DL algorithms to predict and analyze material properties.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold">Computational Materials Researcher <span class="text-md font-normal text-gray-500">[2020 – 2021]</span></h3>
+                    <p class="mt-1 text-gray-700">Performed electronic structure calculations and materials simulations using WIEN2k software.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold">Research Mentor & Freelancer</h3>
+                     <ul class="mt-2 list-disc list-inside text-gray-700">
+                        <li>Completed 6 research theses and provided research assistance to 15 students.</li>
+                        <li>Guided 3 students in ML/DL based materials science research projects.</li>
+                        <li>Taught 12 students Python programming for data analysis, machine learning and deep learning.</li>
+                    </ul>
+                </div>
+                 <div>
+                    <h3 class="text-xl font-semibold">Mathematics Lecturer</h3>
+                    <p class="mt-1 text-gray-700">Delivered undergraduate-level mathematics lectures at Peshawar Institute of Technology.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="mb-24 reveal">
+            <h2 class="text-4xl font-bold section-header ml-8">Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-6">
+                <!-- Project Cards will be injected here by JS -->
+            </div>
+        </section>
+        
+        <!-- Digital Skills Section -->
+        <section id="skills" class="mb-24 reveal">
+            <h2 class="text-4xl font-bold section-header ml-8">Digital Skills</h2>
+            <div id="skills-container" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 mt-6">
+                <!-- Skills will be injected here by JS -->
+            </div>
+        </section>
+
+        <!-- Online Courses Section -->
+        <section id="online-courses" class="mb-24 reveal">
+            <h2 class="text-4xl font-bold section-header ml-8">Online Courses & Certifications</h2>
+            <div id="courses-container" class="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Courses will be injected here by JS -->
+            </div>
+        </section>
+        
+        <!-- Books Studied Section -->
+        <section id="books" class="mb-24 reveal">
+            <h2 class="text-4xl font-bold section-header ml-8">Books Studied</h2>
+            <div id="books-container" class="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+                <!-- Books will be injected here by JS -->
+            </div>
+        </section>
+
+        <!-- Learning Resources Section -->
+        <section id="learning-resources" class="mb-24 reveal">
+             <h2 class="text-4xl font-bold section-header ml-8">Learning Resources</h2>
+             <div id="playlists-container" class="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Playlists will be injected here by JS -->
+            </div>
+        </section>
+
+
+        <!-- Recommendations Section -->
+        <section id="recommendations" class="mb-24 reveal">
+            <h2 class="text-4xl font-bold section-header ml-8">Recommendations</h2>
+            <div id="recommendations-container" class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-8">
+               <!-- Recommendations will be injected here by JS -->
+            </div>
+        </section>
+
+        <!-- Contact Us Section -->
+        <section id="contact" class="mb-24 card p-8 reveal">
+            <h2 class="text-4xl font-bold section-header">Contact Me</h2>
+            <div class="mt-6 space-y-4 text-lg">
+                <p class="flex items-center">
+                    <svg class="w-6 h-6 text-blue-500 mr-3" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    <span class="font-semibold text-gray-900">GitHub:</span>
+                    <a href="https://github.com/SulemanZeb" target="_blank" class="ml-2 text-blue-500 hover:underline">SulemanZeb</a>
+                </p>
+                <p class="flex items-center">
+                    <svg class="w-6 h-6 text-blue-500 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
+                    <span class="font-semibold text-gray-900">Email:</span>
+                    <a href="mailto:sulemanzeb50@uop.edu" class="ml-2 text-blue-500 hover:underline">sulemanzeb50@uop.edu.pk</a>
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white p-6 text-center rounded-t-xl">
+        <p>&copy; 2025 Suleman Zeb. All rights reserved.</p>
+    </footer>
+
+    <!-- Three.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Data for dynamic content
+            const projects = [
+                 { name: "Mat2Spec-Model-for-Density-of-States", desc: "Predicting material properties using Density of States.", url: "https://github.com/SulemanZeb/Mat2Spec-Model-for-Density-of-States.git" },
+                 { name: "ALIGNN for Material Property Prediction", desc: "Utilizing ALIGNN for advanced material property predictions.", url: "https://github.com/SulemanZeb/ALIGNN-for-Material-Property-Prediction.git" },
+                 { name: "M3GNet-Material-Property-Predictor", desc: "Predicting material properties with M3GNet.", url: "https://github.com/SulemanZeb/M3GNet-Material-Property-Predictor.git" },
+                 { name: "End-to-End-Source-Code-Analysis-GenAI-Project", desc: "Generative AI for source code analysis.", url: "https://github.com/SulemanZeb/End-to-End-Source-Code-Analysis-GenAI-Project.git" },
+                 { name: "End-to-End-Wine-Quality-Prediction-Project", desc: "Predicting wine quality from various features.", url: "https://github.com/SulemanZeb/End-to-End-Wine-Quality-Prediction-Project.git" },
+                 { name: "Email-Spam-or-Not-Spam-Classifier-Project", desc: "Machine learning model for spam detection.", url: "https://github.com/SulemanZeb/Email-Spam-or-Not-Spam-Classifier-Project.git" },
+                 { name: "End-to-End-Medical-Chatbot-GenAI-Project", desc: "AI-powered medical chatbot for assistance.", url: "https://github.com/SulemanZeb/End-to-End-Medical-Chatbot-GenAI-Project.git" },
+                 { name: "End-to-End-Text-Summarization-Project", desc: "Automated text summarization using NLP.", url: "https://github.com/SulemanZeb/End-to-End-Text-Summarization-Project.git" },
+                 { name: "End-to-End-Chest-Cancer-Classification-Project", desc: "Deep learning for chest cancer classification.", url: "https://github.com/SulemanZeb/End-to-End-Chest-Cancer-Classification-Project.git" },
+                 { name: "Huggingface-models", desc: "Exploration and usage of Hugging Face models.", url: "https://github.com/SulemanZeb/Huggingface-models.git" },
+                 { name: "End-to-End-Kidney-Disease-Classification-Project", desc: "Building a model for kidney disease classification.", url: "https://github.com/SulemanZeb/End-to-End-Kidney-Disease-Classification-Project.git" }
+            ];
+
+            const skills = [
+                 'Python', 'Anaconda', 'Scikit-learn', 'TensorFlow', 'Keras', 'PyTorch', 'C++', 'Fortran',
+                 'NumPy', 'Pandas', 'SciPy', 'Matplotlib', 'Plotly', 'MLflow', 'Power BI', 'OpenCV',
+                 'Flask', 'FastAPI', 'WordPress', 'HTML5', 'CSS3', 'Heroku', 'Render',
+                 'MySQL', 'Apache', 'Apache Hadoop', 'Apache Kafka', 'Apache Spark',
+                 'Git', 'GitHub', 'GitHub Actions', 'Azure', 'AWS',
+                 'Canva', 'Adobe Photoshop'
+            ];
+
+            const courses = [
+                // Udemy Courses
+                { name: "Data Science Career Path", url: "https://ude.my/UC-03854df1-46c1-440d-86ff-5e624bc92bdb", platform: "udemy"},
+                { name: "Full Stack Data Science Developer Course", url: "https://ude.my/UC-945b2fa6-8a4a-400f-95b2-e51de682181f", platform: "udemy"},
+                { name: "2024 Master class on Data Science using Python", url: "https://ude.my/UC-6618a12c-758d-4e9b-8fe3-751ca8641c00", platform: "udemy"},
+                { name: "Data Analytics & Visualization", url: "https://ude.my/UC-92b0ae4b-c0fe-4a21-b644-51a262302aa6", platform: "udemy"},
+                { name: "Git, GitHub & Markdown Crash Course", url: "https://ude.my/UC-4a155213-5f0c-4945-8922-534d9dde5623", platform: "udemy"},
+                { name: "Python Complete Course For Python Beginners", url: "https://ude.my/UC-500c522c-3fef-43a1-88d8-3264022d52f3", platform: "udemy"},
+                { name: "Learn to Code in Python 3", url: "https://ude.my/UC-bd8a992b-50ec-4267-8e5a-39338a354891", platform: "udemy"},
+                { name: "Python Programming for Beginners | Hindi", url: "https://ude.my/UC-3a0ed59d-a4fa-4576-b4e2-afa982cb0360", platform: "udemy"},
+                { name: "Python OOP: A Complete Course", url: "https://ude.my/UC-90f77189-1921-4860-826c-1d576a8a476f", platform: "udemy"},
+                { name: "Python for OOP: The A-to-Z Course", url: "https://ude.my/UC-67f7c966-6efb-4b76-b718-8e880294d053", platform: "udemy"},
+                { name: "Python And Flask Demonstrations", url: "https://ude.my/UC-c98aa8ca-00af-4605-88c7-dcb7f5dde370", platform: "udemy"},
+                { name: "Python And Flask Framework Complete Course", url: "https://ude.my/UC-9539706d-f9aa-4176-a95d-97d15760d4f9", platform: "udemy"},
+                { name: "Python Beginners to Advance Bootcamp", url: "https://ude.my/UC-219a8321-edfb-42d0-a3c3-86696ef85a2e", platform: "udemy"},
+                { name: "Numpy, SciPy, Matplotlib & Pandas A-Z", url: "https://ude.my/UC-1d2d72f0-6166-4765-bafb-5ca9f3ad737d", platform: "udemy"},
+                { name: "Data Manipulation in Python", url: "https://ude.my/UC-4f929095-7d6b-4bd9-beee-4a800ceefac1", platform: "udemy"},
+                { name: "Mastering Python, Pandas, Numpy", url: "https://ude.my/UC-192415a2-d6bd-41b8-ba74-fea3489c1ab2", platform: "udemy"},
+                { name: "Python Project for Basics Data Analysis", url: "https://ude.my/UC-244d82da-c002-4257-a2c5-95e4c1df7c91", platform: "udemy"},
+                { name: "Python For Data Science A-Z: EDA", url: "https://ude.my/UC-db1a3f63-ceb8-43d5-ac3a-92c4bd7cffbc", platform: "udemy"},
+                { name: "Machine Learning - Fundamental of Python ML", url: "https://ude.my/UC-6aca1241-aeba-488f-a1b9-93ab612f3275", platform: "udemy"},
+                { name: "Machine Learning with Apache Spark 3.0", url: "https://ude.my/UC-8283095c-b550-4335-8519-8efa58ead4c2", platform: "udemy"},
+                { name: "Python for Machine Learning: Complete Course", url: "https://ude.my/UC-5f581dea-249e-44cb-8143-2e69f845d23c", platform: "udemy"},
+                { name: "Python & TensorFlow: Deep Dive into ML", url: "https://ude.my/UC-86dcd023-d0a5-45e8-8314-1e33e7b752b9", platform: "udemy"},
+                { name: "Deep Learning Mastery", url: "https://ude.my/UC-4753c915-18de-478f-b822-d7611c60f77f", platform: "udemy"},
+                { name: "Deep Learning Full course in Hindi", url: "https://ude.my/UC-0996b4aa-91c1-4a80-bbfb-720892af3dba", platform: "udemy"},
+                { name: "Generative AI Mastery With 15+ Projects", url: "https://ude.my/UC-61df75c1-3bd2-4652-9fcd-71e154b59c91", platform: "udemy"},
+                { name: "Master in Generative AI", url: "https://ude.my/UC-dfd9f902-5f86-4e1a-b5df-2103c901d1ea", platform: "udemy"},
+                { name: "Computer Vision Fundamentals", url: "https://ude.my/UC-5e794aff-f13e-4641-9779-2e1d4955d2bc", platform: "udemy"},
+                { name: "Complete ML Project Using YOLOv9", url: "https://ude.my/UC-6623316d-1ec2-4af5-845f-88a10208fbae", platform: "udemy"},
+                { name: "Microsoft Excel - Beginner to Advance", url: "https://ude.my/UC-2042fb22-9c18-4a09-9752-2ab9165b873d", platform: "udemy"},
+                { name: "Excel Success Blueprint", url: "https://ude.my/UC-2796b413-0bf1-40a5-80d6-fe75af48775a", platform: "udemy"},
+                { name: "HTML - The Complete Guide", url: "https://ude.my/UC-7bc3631e-8c3b-490a-a325-86aea1c6c007", platform: "udemy"},
+                { name: "Microsoft Azure: Hands On Training", url: "https://ude.my/UC-47af56e8-30cd-4301-8836-4ca18", platform: "udemy"},
+                { name: "Power BI in Hindi", url: "https://ude.my/UC-1317b968-1bf6-4bdd-b09c-b11cc8af169e", platform: "udemy"},
+                { name: "Body Language / Non-Verbal Communication", url: "https://ude.my/UC-36d9825d-c4a8-466c-a5e7-9a3023af3747", platform: "udemy"},
+                { name: "Ubuntu Linux for beginners", url: "https://ude.my/UC-2e8b0d70-3567-4ced-a69b-9b0aac6487a9", platform: "udemy"},
+                { name: "SQL & Database Design Mastery", url: "https://ude.my/UC-e130b1f2-ce2b-48f1-a4ed-422cdba7672c", platform: "udemy"},
+                { name: "Make a WordPress Website with Elementor", url: "https://ude.my/UC-7925e163-5bc6-4d2d-bac9-c34f87cddcab", platform: "udemy"},
+                { name: "Complete WordPress Website Developer Course", url: "https://ude.my/UC-e38f705f-0f58-4006-b33b-0cdd186d6a26", platform: "udemy"},
+                
+                // Coursera Courses
+                { name: "Structuring Machine Learning Projects", url: "https://coursera.org/verify/H3FW1E2GXPHR", platform: "coursera"},
+                { name: "AI For Everyone", url: "https://coursera.org/verify/YTPUKXQ8JQJ2", platform: "coursera"},
+                { name: "Neural Networks and Deep Learning", url: "https://coursera.org/verify/8DOWDTGAXQC3", platform: "coursera"},
+                { name: "Improving Deep Neural Networks", url: "https://coursera.org/verify/APGOHVGF3DFQ", platform: "coursera"},
+                { name: "Supervised Machine Learning", url: "https://coursera.org/verify/XLA6LEG2HOWL", platform: "coursera"},
+                { name: "Advanced Learning Algorithms", url: "https://coursera.org/verify/9BMOLSCYBESO", platform: "coursera"},
+                { name: "Unsupervised Learning, Recommenders, RL", url: "https://coursera.org/verify/7AHVR98DEOKT", platform: "coursera"},
+                { name: "Deep Learning with PyTorch", url: "https://coursera.org/verify/3SL57LJVCOJM", platform: "coursera"},
+                { name: "AI Agents and Agentic AI with Python", url: "https://coursera.org/verify/JMV6A8XH7D6A", platform: "coursera"}
+            ];
+            
+            const books = [
+                { name: "Python Programming & Numerical Methods", image: "https://placehold.co/200x280/3b82f6/ffffff?text=Python+Methods" },
+                { name: "Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow", image: "https://placehold.co/200x280/10b981/ffffff?text=Hands-On+ML" },
+                { name: "Practical Natural Language Processing", image: "https://placehold.co/200x280/8b5cf6/ffffff?text=Practical+NLP" }
+            ];
+            
+            const playlists = [
+                { name: "100 Days of Python", url: "https://youtube.com/playlist?list=PLu0W_9lII9agwh1XjRt242xIpHhPT2llg" },
+                { name: "100 Days of ML", url: "https://youtube.com/playlist?list=PLKnIA16_Rmvbr7zKYQuBfsVkjoLcJgxHH" },
+                { name: "100 Days of DL", url: "https://youtube.com/playlist?list=PLKnIA16_RmvYuZauWaPlRTC54KxSNLtNn" },
+                { name: "PyTorch", url: "https://youtube.com/playlist?list=PLKnIA16_RmvYuZauWaPlRTC54KxSNLtNn" },
+                { name: "Gen AI", url: "https://youtube.com/playlist?list=PLKnIA16_RmvaTbihpo4MtzVm4XOQa0ER0" },
+                { name: "MLOps", url: "https://youtube.com/playlist?list=PLZoTAELRMXVOk1pRcOCaG5xtXxgMalpIe" }
+            ];
+            
+            const recommendations = [
+                { 
+                    name: "Dr. Ibrar Ahmad",
+                    title: "Assistant Professor, Dept. of Computer Science, University of Peshawar",
+                    details: "Ph.D. in Artificial Intelligence, Beijing University of Posts and Telecommunications, China (2017). His research interests include AI, Machine Learning, and Deep Learning.",
+                    email: "ibrar@uop.edu.pk",
+                    profileUrl: "http://www.uop.edu.pk/departments/Teaching-Faculty/?r=10&q=Dr-Ibrar-Ahmad"
+                },
+                {
+                    name: "Dr. Shabeer Ahmad Mian",
+                    title: "Assistant Professor, Dept. of Physics, University of Peshawar",
+                    details: "Ph.D. in Nano Fusion Technology, Korea (2012). His research focuses on Photo-electrochemical water Splitting, Bio-sensing, and DFT studies.",
+                    email: "shabeerahmad@uop.edu.pk",
+                    profileUrl: "http://www.uop.edu.pk/departments/Teaching-Faculty/?r=1165&q=Shabeer-Ahmad-Mian"
+                }
+            ];
+
+            // Function to populate content
+            const populateContent = () => {
+                const projectContainer = document.querySelector('#projects .grid');
+                projects.forEach(project => {
+                    const card = `
+                        <div class="card p-6 flex flex-col text-center">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">${project.name}</h3>
+                            <p class="text-gray-700 text-sm mb-4 flex-grow">${project.desc}</p>
+                            <a href="${project.url}" target="_blank" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:scale-105 mt-auto">View Project</a>
+                        </div>`;
+                    projectContainer.innerHTML += card;
+                });
+
+                const skillsContainer = document.getElementById('skills-container');
+                skills.forEach(skill => {
+                    const card = `
+                        <div class="card p-4 flex items-center justify-center text-center">
+                            <p class="text-md font-semibold text-gray-800">${skill}</p>
+                        </div>
+                    `;
+                    skillsContainer.innerHTML += card;
+                });
+
+                const coursesContainer = document.getElementById('courses-container');
+                courses.forEach(course => {
+                    const card = `
+                        <div class="card p-6 flex flex-col text-center items-center">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-3 flex-grow">${course.name}</h3>
+                            <a href="${course.url}" target="_blank" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:scale-105 mt-auto">Verify Certificate</a>
+                        </div>`;
+                    coursesContainer.innerHTML += card;
+                });
+
+                const booksContainer = document.getElementById('books-container');
+                books.forEach(book => {
+                    const card = `
+                        <div class="card p-6 flex flex-col items-center text-center">
+                            <img src="${book.image}" alt="${book.name}" class="w-32 h-44 object-cover rounded-lg mb-4 shadow-md">
+                            <h3 class="text-lg font-semibold text-gray-900 flex-grow">${book.name}</h3>
+                        </div>`;
+                    booksContainer.innerHTML += card;
+                });
+
+                const playlistsContainer = document.getElementById('playlists-container');
+                playlists.forEach(playlist => {
+                    const card = `
+                        <div class="card p-6 flex flex-col text-center">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-3 flex-grow">${playlist.name}</h3>
+                            <a href="${playlist.url}" target="_blank" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:scale-105 mt-auto">Watch on YouTube</a>
+                        </div>`;
+                    playlistsContainer.innerHTML += card;
+                });
+                
+                const recommendationsContainer = document.getElementById('recommendations-container');
+                recommendations.forEach(rec => {
+                    const card = `
+                        <div class="card p-6 flex flex-col">
+                            <h3 class="text-2xl font-semibold text-gray-900">${rec.name}</h3>
+                            <p class="text-md text-gray-600 mb-4">${rec.title}</p>
+                            <p class="text-gray-700 mb-4 flex-grow">${rec.details}</p>
+                            <div class="mt-auto border-t border-gray-200 pt-4 flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-2 sm:space-y-0">
+                                <a href="mailto:${rec.email}" class="text-blue-600 hover:underline text-sm">Email</a>
+                                <a href="${rec.profileUrl}" target="_blank" class="bg-gray-200 hover:bg-gray-300 text-gray-800 text-sm font-bold py-2 px-4 rounded-full transition duration-300">View Profile</a>
+                            </div>
+                        </div>`;
+                    recommendationsContainer.innerHTML += card;
+                });
+            };
+
+            populateContent();
+            
+            // Mobile Menu Toggle
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            menuBtn.addEventListener('click', () => {
+                mobileMenu.style.display = mobileMenu.style.display === 'block' ? 'none' : 'block';
+            });
+
+            // Scroll Animation Observer
+            const sections = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // Three.js Scene Setup
+            let scene, camera, renderer, particles, aiNetworkGroup;
+            let mouseX = 0, mouseY = 0;
+            let windowHalfX = window.innerWidth / 2;
+            let windowHalfY = window.innerHeight / 2;
+            
+            const initThreeJS = () => {
+                const canvas = document.getElementById('hero-canvas');
+                if (!canvas) return;
+
+                scene = new THREE.Scene();
+                camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+                camera.position.z = 100;
+
+                renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                renderer.setPixelRatio(window.devicePixelRatio);
+                renderer.setClearColor(0x000000, 0);
+
+                aiNetworkGroup = new THREE.Group();
+                scene.add(aiNetworkGroup);
+
+                const particleCount = 200;
+                const positions = [];
+                const particleGeometry = new THREE.BufferGeometry();
+                for (let i = 0; i < particleCount; i++) {
+                    const x = (Math.random() - 0.5) * 300;
+                    const y = (Math.random() - 0.5) * 300;
+                    const z = (Math.random() - 0.5) * 300;
+                    positions.push(x, y, z);
+                }
+                particleGeometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+                const particleMaterial = new THREE.PointsMaterial({
+                    size: 1.5,
+                    color: 0x3b82f6,
+                    blending: THREE.AdditiveBlending,
+                    transparent: true,
+                    opacity: 0.8
+                });
+                particles = new THREE.Points(particleGeometry, particleMaterial);
+                aiNetworkGroup.add(particles);
+
+                document.addEventListener('mousemove', onDocumentMouseMove, false);
+                window.addEventListener('resize', onWindowResize, false);
+            };
+
+            const onDocumentMouseMove = (event) => {
+                mouseX = (event.clientX - windowHalfX) / 2;
+                mouseY = (event.clientY - windowHalfY) / 2;
+            };
+
+            const onWindowResize = () => {
+                windowHalfX = window.innerWidth / 2;
+                windowHalfY = window.innerHeight / 2;
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            };
+
+            const animate = () => {
+                if(!renderer) return;
+                requestAnimationFrame(animate);
+                // Increased speed by 10% (0.0005 * 1.1 = 0.00055)
+                aiNetworkGroup.rotation.y += 0.00055; 
+                camera.position.x += (mouseX - camera.position.x) * 0.001;
+                camera.position.y += (-mouseY - camera.position.y) * 0.001;
+                camera.lookAt(scene.position);
+                renderer.render(scene, camera);
+            };
+            
+            initThreeJS();
+            animate();
+        });
+    </script>
+</body>
+</html>
+
+
