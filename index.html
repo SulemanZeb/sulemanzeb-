@@ -110,11 +110,11 @@
                 <a href="#education" class="hover:text-blue-600 transition duration-300">Education</a>
                 <a href="#research-projects" class="hover:text-blue-600 transition duration-300">Research</a>
                 <a href="#work-experience" class="hover:text-blue-600 transition duration-300">Experience</a>
-                <a href="#projects" class="hover:text-blue-600 transition duration-300">Projects</a>
                 <a href="#skills" class="hover:text-blue-600 transition duration-300">Skills</a>
                 <a href="#online-courses" class="hover:text-blue-600 transition duration-300">Courses</a>
                 <a href="#books" class="hover:text-blue-600 transition duration-300">Books</a>
                 <a href="#learning-resources" class="hover:text-blue-600 transition duration-300">Resources</a>
+                <a href="#projects" class="hover:text-blue-600 transition duration-300">Projects</a>
                 <a href="#recommendations" class="hover:text-blue-600 transition duration-300">Recommendations</a>
                 <a href="#contact" class="hover:text-blue-600 transition duration-300">Contact</a>
             </div>
@@ -131,11 +131,11 @@
             <a href="#education" class="block py-2 px-4 text-sm hover:bg-gray-200 rounded">Education</a>
             <a href="#research-projects" class="block py-2 px-4 text-sm hover:bg-gray-200 rounded">Research</a>
             <a href="#work-experience" class="block py-2 px-4 text-sm hover:bg-gray-200 rounded">Experience</a>
-            <a href="#projects" class="block py-2 px-4 text-sm hover:bg-gray-200 rounded">Projects</a>
             <a href="#skills" class="block py-2 px-4 text-sm hover:bg-gray-200 rounded">Skills</a>
             <a href="#online-courses" class="block py-2 px-4 text-sm hover:bg-gray-200 rounded">Courses</a>
             <a href="#books" class="block py-2 px-4 text-sm hover:bg-gray-200 rounded">Books</a>
             <a href="#learning-resources" class="block py-2 px-4 text-sm hover:bg-gray-200 rounded">Resources</a>
+            <a href="#projects" class="block py-2 px-4 text-sm hover:bg-gray-200 rounded">Projects</a>
             <a href="#recommendations" class="block py-2 px-4 text-sm hover:bg-gray-200 rounded">Recommendations</a>
             <a href="#contact" class="block py-2 px-4 text-sm hover:bg-gray-200 rounded">Contact</a>
         </div>
@@ -274,14 +274,6 @@
             </div>
         </section>
 
-        <!-- Projects Section -->
-        <section id="projects" class="mb-24 reveal">
-            <h2 class="text-4xl font-bold section-header ml-8">Projects</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-6">
-                <!-- Project Cards will be injected here by JS -->
-            </div>
-        </section>
-        
         <!-- Digital Skills Section -->
         <section id="skills" class="mb-24 reveal">
             <h2 class="text-4xl font-bold section-header ml-8">Digital Skills</h2>
@@ -314,6 +306,13 @@
             </div>
         </section>
 
+        <!-- Projects Section -->
+        <section id="projects" class="mb-24 reveal">
+            <h2 class="text-4xl font-bold section-header ml-8">Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-6">
+                <!-- Project Cards will be injected here by JS -->
+            </div>
+        </section>
 
         <!-- Recommendations Section -->
         <section id="recommendations" class="mb-24 reveal">
@@ -438,7 +437,14 @@
                 { name: "100 Days of DL", url: "https://youtube.com/playlist?list=PLKnIA16_RmvYuZauWaPlRTC54KxSNLtNn" },
                 { name: "PyTorch", url: "https://youtube.com/playlist?list=PLKnIA16_RmvYuZauWaPlRTC54KxSNLtNn" },
                 { name: "Gen AI", url: "https://youtube.com/playlist?list=PLKnIA16_RmvaTbihpo4MtzVm4XOQa0ER0" },
-                { name: "MLOps", url: "https://youtube.com/playlist?list=PLZoTAELRMXVOk1pRcOCaG5xtXxgMalpIe" }
+                { name: "MLOps", url: "https://youtube.com/playlist?list=PLZoTAELRMXVOk1pRcOCaG5xtXxgMalpIe" },
+                { name: "ML Projects", url: "https://youtube.com/playlist?list=PLKnIA16_RmvY5eP91BGPa0vXUYmIdtfPQ" },
+                { name: "Pandas Data Analysis", url: "https://youtube.com/playlist?list=PLKnIA16_RmvbR85fgbfVRKOiMokUKVupy" },
+                { name: "FastApi", url: "https://youtube.com/playlist?list=PLKnIA16_RmvZ41tjbKB2ZnwchfniNsMuQ" },
+                { name: "Graph Neural Network", url: "https://youtube.com/playlist?list=PLRWTUhb_YehkGBCBxKOiEJtNQrBHqln4N" },
+                { name: "Scientific Writing", url: "https://youtube.com/playlist?list=PL9XvIvvVL50FfbyuZQjpF8zcTB7HWROYY" },
+                { name: "Linux Course", url: "https://youtube.com/playlist?list=PL9XvIvvVL50GrMLg9dj1y0QJckn4Z55hq" },
+                { name: "End to End Projects", url: "https://youtube.com/playlist?list=PLkz_y24mlSJaGcOXgJSuMM62sFha4fank" }
             ];
             
             const recommendations = [
@@ -484,8 +490,8 @@
                 const coursesContainer = document.getElementById('courses-container');
                 courses.forEach(course => {
                     const card = `
-                        <div class="card p-6 flex flex-col text-center items-center">
-                            <h3 class="text-lg font-semibold text-gray-900 mb-3 flex-grow">${course.name}</h3>
+                        <div class="card p-6 flex flex-col text-center items-center justify-center">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-4 flex-grow">${course.name}</h3>
                             <a href="${course.url}" target="_blank" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:scale-105 mt-auto">Verify Certificate</a>
                         </div>`;
                     coursesContainer.innerHTML += card;
@@ -626,5 +632,4 @@
     </script>
 </body>
 </html>
-
 
